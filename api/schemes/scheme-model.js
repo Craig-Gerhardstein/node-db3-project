@@ -21,6 +21,7 @@ function find() { // EXERCISE A
   .select('sc.*')
   .count('st.step_id as number_of_steps')
   .groupBy('sc.scheme_id')
+  .orderBy('sc.scheme_id', 'asc')
 }
 
 async function findById(scheme_id) { // EXERCISE B
@@ -170,7 +171,7 @@ function addStep(scheme_id, step) { // EXERCISE E
     return db('steps as st')
     .join('schemes as sc', 'sc.scheme_id', 'st.scheme_id')
     .select('step_id', 'step_number', 'instructions', 'scheme_name')
-    .orderBY('step_number')
+    .orderBy('step_number')
     .where('sc.scheme_id', scheme_id)
 
   })
